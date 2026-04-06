@@ -12,6 +12,8 @@ export default function Widgets() {
     (state: RootState) => state.analytics,
   );
 
+  const upperCaseMetric = metric.charAt(0).toUpperCase() + metric.slice(1);
+
   const { startDate, endDate } = useMemo(() => {
     if (quickRange) {
       const end = new Date(mockData[mockData.length - 1].date);
@@ -45,7 +47,7 @@ export default function Widgets() {
       <WidgetCard label="Total" value={total} />
       <WidgetCard label="Trend" value={`${trend.toFixed(1)}%`} trend={trend} />
       <WidgetCard label="Data Points" value={data.length} />
-      <WidgetCard label="Metric" value={metric} />
+      <WidgetCard label="Metric" value={upperCaseMetric} />
     </div>
   );
 }

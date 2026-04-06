@@ -1,7 +1,8 @@
-import Filters from "./Filters";
+import LineChartFilters from "./LineChartFilters";
 import ChartSection from "./ChartSection";
 import Widgets from "./Widgets";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import PieChartSection from "./PieChartSection";
 
 export default function Dashboard() {
   return (
@@ -11,10 +12,10 @@ export default function Dashboard() {
           <h1 className="text-4xl font-bold tracking-tight">InsightBoard</h1>
           <ThemeSwitcher />
         </div>
-
-        <Filters />
+        <LineChartFilters />
         <Widgets />
         <ChartSection />
+        <PieChartSection />
       </div>
     </div>
   );

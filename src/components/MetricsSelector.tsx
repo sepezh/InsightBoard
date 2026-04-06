@@ -5,9 +5,11 @@ import { MetricType } from "@/store/analyticsSlice";
 interface Props {
   value: MetricType;
   onChange: (metric: MetricType) => void;
+
 }
 
 export default function MetricSelector({ value, onChange }: Props) {
+
   return (
     <select
       value={value}

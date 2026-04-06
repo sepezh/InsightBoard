@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { setQuickRange } from "@/store/analyticsSlice";
 
-export default function QuickDateFilters() {
+export default function QuickDateRangePicker() {
   const dispatch = useDispatch();
   const quickRange = useSelector((state: RootState) => state.analytics.quickRange);
 
   const base =
-    "px-3 py-1.5 mb-2 rounded-lg border text-sm transition";
+    "px-1 lg:px-2 py-1.5 mb-2 rounded-lg border text-sm transition";
   const inactive =
     "border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800";
   const active =

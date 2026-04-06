@@ -13,3 +13,4 @@ export const mockData = Array.from({ length: 120 }).map((_, i) => {
     activity: Math.round(activity),
   };
 });
+
