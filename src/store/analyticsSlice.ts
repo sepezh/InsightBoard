@@ -6,6 +6,7 @@ interface AnalyticsState {
   dateRange: { start: string; end: string };
   metric: MetricType;
   category: string | null;
+  quickRange: number | null; // ← اضافه شد
 }
 
 const initialState: AnalyticsState = {
@@ -15,6 +16,7 @@ const initialState: AnalyticsState = {
   },
   metric: "users",
   category: null,
+  quickRange: null, // ← اضافه شد
 };
 
 const analyticsSlice = createSlice({
@@ -24,17 +26,26 @@ const analyticsSlice = createSlice({
     setMetric: (state, action: PayloadAction<MetricType>) => {
       state.metric = action.payload;
     },
+
     setDateRange: (
       state,
-      action: PayloadAction<{ start: string; end: string }>
+      action: PayloadAction<{ start: string; end: string }>,
     ) => {
       state.dateRange = action.payload;
+      state.quickRange = null; // ← اگر کاربر تاریخ دستی انتخاب کرد، quick filter غیرفعال شود
     },
+
     setCategory: (state, action: PayloadAction<string | null>) => {
       state.category = action.payload;
+    },
+
+    setQuickRange: (state, action: PayloadAction<number>) => {
+      state.quickRange = action.payload;
     },
   },
 });
 
-export const { setMetric, setDateRange, setCategory } = analyticsSlice.actions;
+export const { setMetric, setDateRange, setCategory, setQuickRange } =
+  analyticsSlice.actions;
+
 export default analyticsSlice.reducer;

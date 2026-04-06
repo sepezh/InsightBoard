@@ -4,13 +4,33 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import ChartCard from "@/components/ChartCard";
 import { getFilteredData } from "@/lib/computeMetrics";
+import { mockData } from "@/lib/mockData";
+import { useMemo } from "react";
 
 export default function ChartSection() {
-  const { metric, dateRange } = useSelector(
+  const { metric, dateRange, quickRange } = useSelector(
     (state: RootState) => state.analytics,
   );
 
-  const data = getFilteredData(metric, dateRange);
+  const { startDate, endDate } = useMemo(() => {
+    if (quickRange) {
+      const end = new Date(mockData[mockData.length - 1].date);
+      const start = new Date(end);
+      start.setDate(end.getDate() - quickRange);
+
+      return {
+        startDate: start.toISOString().slice(0, 10),
+        endDate: end.toISOString().slice(0, 10),
+      };
+    }
+
+    return {
+      startDate: dateRange.start,
+      endDate: dateRange.end,
+    };
+  }, [dateRange, quickRange]);
+
+  const data = getFilteredData(metric, { start: startDate, end: endDate });
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 animate-fadeIn">
