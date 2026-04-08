@@ -4,9 +4,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { getFilteredData } from "@/lib/computeMetrics";
 import { mockData } from "@/lib/mockData";
-import { useMemo } from "react";
-import AreaChartCard from "@/components/AreaChartCard";
-import LineChartCard from "@/components/LineChartCard";
+import { Suspense, useMemo } from "react";
+import dynamic from "next/dynamic";
+import ChartSkeleton from "@/components/ChartSkeleton";
+
+const AreaChartCard = dynamic(() => import("@/components/AreaChartCard"));
+const LineChartCard = dynamic(() => import("@/components/LineChartCard"));
 
 export default function ChartSection() {
   const { metric, dateRange, quickRange } = useSelector(
@@ -43,8 +46,27 @@ export default function ChartSection() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 animate-fadeIn">
-      <AreaChartCard title="Metric Over Time" data={data} dataKey={metric}/>
-      <LineChartCard title="Daily Trend" data={trendData} dataKey="trend"/>
+      <ChartArea title="Metric Over Time">
+        <AreaChartCard data={data} dataKey={metric} />
+      </ChartArea>
+      <ChartArea title="Daily Trend">
+        <LineChartCard data={trendData} dataKey="trend" />
+      </ChartArea>
+    </div>
+  );
+}
+
+export function ChartArea({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow duration-300 animate-fadeIn">
+      <h3 className="text-lg font-semibold mb-4 tracking-tight">{title}</h3>
+      <Suspense fallback={<ChartSkeleton />}>{children}</Suspense>
     </div>
   );
 }

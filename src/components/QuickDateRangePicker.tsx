@@ -9,7 +9,7 @@ export default function QuickDateRangePicker() {
   const quickRange = useSelector((state: RootState) => state.analytics.quickRange);
 
   const base =
-    "px-1 lg:px-2 py-1.5 mb-2 rounded-lg border text-sm transition";
+    "px-1 lg:px-2 py-1.5 mb-2 rounded-lg border text-sm focus-visible:outline-none";
   const inactive =
     "border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800";
   const active =
