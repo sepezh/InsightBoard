@@ -2,7 +2,6 @@ import LineChartFilters from "./LineChartFilters";
 import ChartSection from "./ChartSection";
 import Widgets from "./Widgets";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
-import PieChartSection from "./PieChartSection";
 
 export default function Dashboard() {
   return (
@@ -15,7 +14,6 @@ export default function Dashboard() {
         <LineChartFilters />
         <Widgets />
         <ChartSection />
-        <PieChartSection />
       </div>
     </div>
   );
