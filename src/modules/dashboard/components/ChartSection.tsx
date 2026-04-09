@@ -6,10 +6,10 @@ import { getFilteredData } from "@/lib/computeMetrics";
 import { mockData } from "@/lib/mockData";
 import { Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
-import ChartSkeleton from "@/components/ChartSkeleton";
+import ChartSkeleton from "@/components/charts/ChartSkeleton";
 
-const AreaChartCard = dynamic(() => import("@/components/AreaChartCard"));
-const LineChartCard = dynamic(() => import("@/components/LineChartCard"));
+const AreaChartCard = dynamic(() => import("@/components/charts/AreaChartCard"));
+const LineChartCard = dynamic(() => import("@/components/charts/LineChartCard"));
 
 export default function ChartSection() {
   const { metric, dateRange, quickRange } = useSelector(
@@ -18,7 +18,8 @@ export default function ChartSection() {
 
   const { startDate, endDate } = useMemo(() => {
     if (quickRange) {
-      const end = new Date(mockData[mockData.length - 1].date);
+      const data = mockData();
+      const end = new Date(data[data.length - 1].date);
       const start = new Date(end);
       start.setDate(end.getDate() - quickRange);
 

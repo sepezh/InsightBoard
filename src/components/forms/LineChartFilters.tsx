@@ -2,10 +2,10 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import { setMetric, setDateRange } from "@/store/analyticsSlice";
-import MetricSelector from "@/components/MetricsSelector";
-import DateRangePicker from "@/components/DateRangePicker";
-import QuickDateRangePicker from "@/components/QuickDateRangePicker";
+import { setMetric, setDateRange } from "@/store/slices/analyticsSlice";
+import MetricSelector from "@/components/forms/MetricsSelector";
+import DateRangePicker from "@/components/forms/DateRangePicker";
+import QuickDateRangePicker from "@/components/forms/QuickDateRangePicker";
 
 export default function LineChartFilters() {
   const dispatch = useDispatch();

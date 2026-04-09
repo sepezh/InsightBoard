@@ -2,11 +2,13 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import { setQuickRange } from "@/store/analyticsSlice";
+import { setQuickRange } from "@/store/slices/analyticsSlice";
 
 export default function QuickDateRangePicker() {
   const dispatch = useDispatch();
-  const quickRange = useSelector((state: RootState) => state.analytics.quickRange);
+  const quickRange = useSelector(
+    (state: RootState) => state.analytics.quickRange,
+  );
 
   const base =
     "px-1 lg:px-2 py-1.5 mb-2 rounded-lg border text-sm focus-visible:outline-none";

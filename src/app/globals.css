@@ -28,3 +28,18 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.4s ease-out forwards;
 }
+
+.react-datepicker {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+  border: 1px solid black !important;
+  border-radius: 0px !important;
+}
+
+.recharts-tooltip-label {
+  color: var(--foreground) !important;
+}
+
+.recharts-default-tooltip {
+  background: var(--background) !important;
+}
