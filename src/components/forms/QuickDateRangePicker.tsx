@@ -11,11 +11,11 @@ export default function QuickDateRangePicker() {
   );
 
   const base =
-    "px-1 lg:px-2 py-1.5 mb-2 rounded-lg border text-sm focus-visible:outline-none";
+    "px-1 lg:px-2 py-1.5 mb-2 rounded-lg border text-sm focus-visible:outline-none cursor-pointer";
   const inactive =
     "border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800";
   const active =
-    "bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-500 dark:border-indigo-500";
+    "bg-[#8884d8] text-white border-[#8884d8] dark:bg-[#8884d8] dark:border-[#8884d8]";
 
   return (
     <div className="flex items-center gap-3">

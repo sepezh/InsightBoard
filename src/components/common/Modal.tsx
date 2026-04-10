@@ -21,7 +21,7 @@ export default function Modal({ title, children, onClose }: Props) {
         >
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 dark:hover:text-gray-300"
+            className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 dark:hover:text-gray-300 cursor-pointer"
           >
             ✕
           </button>
