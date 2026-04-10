@@ -7,6 +7,7 @@
   --border: #d1d5db;
   --surface: #f8fafc;
   --accent: #8884d8;
+  --keyboard-selected: #cdc1fa;
 }
 
 .dark {
@@ -15,6 +16,7 @@
   --border: #334155;
   --surface: #1e293b;
   --accent: #a78bfa;
+  --keyboard-selected: #cdc1fa;
 }
 
 html,
@@ -69,16 +71,21 @@ body {
 
 .react-datepicker__day,
 .react-datepicker__day-name,
-.react-datepicker__time-name {
+.react-datepicker__time-name,
+.recharts-tooltip-label,
+.react-datepicker__day--selected {
   color: var(--foreground) !important;
 }
 
-.react-datepicker__day--selected,
-.react-datepicker__day--keyboard-selected {
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day:hover {
+  color: #000 !important;
+}
+
+.react-datepicker__day--selected {
   background-color: var(--accent) !important;
-  color: #fff !important;
 }
 
-.recharts-tooltip-label {
-  color: var(--foreground) !important;
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--keyboard-selected) !important;
 }
